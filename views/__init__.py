@@ -1,1 +1,1 @@
-from views.index import index
+from views.predict_page import predict_page
