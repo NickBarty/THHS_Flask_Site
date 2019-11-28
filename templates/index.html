@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{#{% from "macros/nav_macros.html" import nav_link with context %}#}
+{#{% from "macros/nav_macros.html" import dropdown_nav with context %}#}
+{#{% from "macros/nav_macros.html" import nav_logo with context %}#}
+{#{% from "macros/nav_macros.html" import dropdown_item with context %}#}
+
+<head>
+    {% block head %}
+{#        <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">#}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/site_styles.css') }}"/>
+        <title>Predict</title>
+
+        {# This makes the website responsive; all elemenets need to be responsive for this to work. #}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% endblock %}
+</head>
+
+<body>
+    <h1>YEY</h1>
+</body>
+
+</html>
