@@ -6,100 +6,104 @@
     <title>THHS Room Prediction</title>
 
 </head>
+<div class="result">
+    {#If there is a result from the Azure API, display it#}
+    {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+</div>
 <body>
-{#If there is a result from the Azure API, display it#}
-{% if result %}
-    <p>{{ result }}</p>
-{% endif %}
-<form method="POST">
+<div class="body">
+    <form method="POST">
 
-    {#Form code for room number#}
-    <label for="Room Number">Room Number</label>
-    <select id="Room Number" name="Room Number">
-        {#      If statement to prevent bad data entry for multiple entries of same value#}
-        {% if session["Room Number"] %}
-            <option value="{{ session["Room Number"] }}">{{ session["Room Number"] }}</option>
-        {% endif %}
+        {#Form code for room number#}
+        <label for="Room Number">Room Number</label>
+        <select id="Room Number" name="Room Number">
+            {#      If statement to prevent bad data entry for multiple entries of same value#}
+            {% if session["Room Number"] %}
+                <option value="{{ session["Room Number"] }}">{{ session["Room Number"] }}</option>
+            {% endif %}
 
-        {#    For loop to iterate over all values and add them to the dropdown menu#}
-        {% for i in ["A1.673","A1.710","A1.721","A1.724","A1.725","A1.728","A1.729","A1.731","A1.732","A1.733","A1.734",
+            {#    For loop to iterate over all values and add them to the dropdown menu#}
+            {% for i in ["A1.673","A1.710","A1.721","A1.724","A1.725","A1.728","A1.729","A1.731","A1.732","A1.733","A1.734",
         "A1.738","A1.742","A1.753","A1.754","A1.756","A1.758","A1.759","A1.760","A1.762","A1.764","A1.766","A1.767",
         "A1.770","A1.771","A1.772","A1.773","A1.779"] %}
-            <option value={{ i }}>{{ i }}</option>
-        {% endfor %}
-    </select>
-    <br><br>
+                <option value={{ i }}>{{ i }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
 
-    {#Form code for weekday#}
-    <label for="Weekday">Weekday</label>
-    <select id="Weekday" name="Weekday">
-        {#      If statement to prevent bad data entry for multiple entries of same value#}
-        {% if session["Weekday"] %}
-            <option value="{{ session["Weekday"] }}">{{ session["Weekday"] }}</option>
-        {% endif %}
+        {#Form code for weekday#}
+        <label for="Weekday">Weekday</label>
+        <select id="Weekday" name="Weekday">
+            {#      If statement to prevent bad data entry for multiple entries of same value#}
+            {% if session["Weekday"] %}
+                <option value="{{ session["Weekday"] }}">{{ session["Weekday"] }}</option>
+            {% endif %}
 
-        {#    For loop to iterate over all values and add them to the dropdown menu#}
-        {% for i in ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"] %}
-            <option value={{ i }}>{{ i }}</option>
-        {% endfor %}
-    </select>
-    <br><br>
+            {#    For loop to iterate over all values and add them to the dropdown menu#}
+            {% for i in ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"] %}
+                <option value={{ i }}>{{ i }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
 
-    {#Form code for month#}
-    <label for="Month">Month</label>
-    <select id="Month" name="Month">
-        {#      If statement to prevent bad data entry for multiple entries of same value#}
-        {% if session["Month"] %}
-            <option value="{{ session["Month"] }}">{{ session["Month"] }}</option>
-        {% endif %}
+        {#Form code for month#}
+        <label for="Month">Month</label>
+        <select id="Month" name="Month">
+            {#      If statement to prevent bad data entry for multiple entries of same value#}
+            {% if session["Month"] %}
+                <option value="{{ session["Month"] }}">{{ session["Month"] }}</option>
+            {% endif %}
 
-        {#    For loop to iterate over all values and add them to the dropdown menu#}
-        {% for i in ["January","February","March","April","May","June","July","August","September","October","November","December"] %}
-            <option value={{ i }}>{{ i }}</option>
-        {% endfor %}
-    </select>
-    <br><br>
+            {#    For loop to iterate over all values and add them to the dropdown menu#}
+            {% for i in ["January","February","March","April","May","June","July","August","September","October","November","December"] %}
+                <option value={{ i }}>{{ i }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
 
-    {#Form code for hour#}
-    <label for="Hour">Hour</label>
-    <select id="Hour" name="Hour">
-        {#      If statement to prevent bad data entry for multiple entries of same value#}
-        {% if session["Hour"] %}
-            <option value="{{ session["Hour"] }}">{{ session["Hour"] }}</option>
-        {% endif %}
-        <option value=06>6 AM</option>
-        <option value=07>7 AM</option>
-        <option value=08>8 AM</option>
-        <option value=09>9 AM</option>
-        <option value=10>10 AM</option>
-        <option value=11>11 AM</option>
-        <option value=12>12 PM</option>
-        <option value=13>1 PM</option>
-        <option value=14>2 PM</option>
-        <option value=15>3 PM</option>
-        <option value=16>4 PM</option>
-        <option value=17>5 PM</option>
-        <option value=18>6 PM</option>
-    </select>
-    <br><br>
+        {#Form code for hour#}
+        <label for="Hour">Hour</label>
+        <select id="Hour" name="Hour">
+            {#      If statement to prevent bad data entry for multiple entries of same value#}
+            {% if session["Hour"] %}
+                <option value="{{ session["Hour"] }}">{{ session["Hour"] }}</option>
+            {% endif %}
+            <option value=06>6 AM</option>
+            <option value=07>7 AM</option>
+            <option value=08>8 AM</option>
+            <option value=09>9 AM</option>
+            <option value=10>10 AM</option>
+            <option value=11>11 AM</option>
+            <option value=12>12 PM</option>
+            <option value=13>1 PM</option>
+            <option value=14>2 PM</option>
+            <option value=15>3 PM</option>
+            <option value=16>4 PM</option>
+            <option value=17>5 PM</option>
+            <option value=18>6 PM</option>
+        </select>
+        <br><br>
 
-    {#Form code for minutes#}
-    <label for="Minutes">Minutes</label>
-    <select id="Minutes" name="Minutes">
-        {#      If statement to prevent bad data entry for multiple entries of same value#}
-        {% if session["Minutes"] %}
-            <option value="{{ session["Minutes"] }}">{{ session["Minutes"] }}</option>
-        {% endif %}
+        {#Form code for minutes#}
+        <label for="Minutes">Minutes</label>
+        <select id="Minutes" name="Minutes">
+            {#      If statement to prevent bad data entry for multiple entries of same value#}
+            {% if session["Minutes"] %}
+                <option value="{{ session["Minutes"] }}">{{ session["Minutes"] }}</option>
+            {% endif %}
 
-        {#    For loop to iterate over all values and add them to the dropdown menu#}
-        {% for i in [0,10,20,30,40,50] %}
-            <option value={{ i }}>{{ i }}</option>
-        {% endfor %}
-    </select>
-    <br><br>
+            {#    For loop to iterate over all values and add them to the dropdown menu#}
+            {% for i in [0,10,20,30,40,50] %}
+                <option value={{ i }}>{{ i }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
 
-    <input type="submit">
-</form>
+        <input type="submit" class="submit">
+    </form>
+</div>
 </body>
 
 </html>
